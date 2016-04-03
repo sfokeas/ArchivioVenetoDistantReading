@@ -47,9 +47,9 @@ stop_ids = [dictionary.token2id[stopword] for stopword in stopWords
             if stopword in dictionary.token2id]
 
 # filter words that do not appear frequently
-rare = [tokenid for tokenid, docfreq in dictionary.dfs.iteritems() if docfreq < 50]
+rare = [tokenid for tokenid, docfreq in dictionary.dfs.iteritems() if docfreq == 1]
 
-# oneLetterWords = [tokenid for tokenid, value in dictionary.iteritems() if len(value) > 1] # doesn't work. goal was to remove one leter words
+oneLetterWords = [tokenid for tokenid in dictionary.keys() if len(dictionary.get(tokenid)) == 1] # doesn't work. goal was to remove one leter words
 
 dictionary.filter_tokens(stop_ids + rare)
 dictionary.compactify()  # remove gaps in id sequence after words that were removed
