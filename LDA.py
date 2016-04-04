@@ -51,7 +51,7 @@ rare = [tokenid for tokenid, docfreq in dictionary.dfs.iteritems() if docfreq ==
 
 oneLetterWords = [tokenid for tokenid in dictionary.keys() if len(dictionary.get(tokenid)) == 1] # doesn't work. goal was to remove one leter words
 
-dictionary.filter_tokens(stop_ids + rare)
+dictionary.filter_tokens(stop_ids + rare + oneLetterWords)
 dictionary.compactify()  # remove gaps in id sequence after words that were removed
 
 numTokensAfterExtremeRemoval = len(dictionary.keys())
