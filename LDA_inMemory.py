@@ -7,7 +7,7 @@ from nltk.stem.snowball import ItalianStemmer
 from nltk.tokenize import TreebankWordTokenizer
 
 filename = "/home/sotos/Desktop/digital_humanites/data/50articles"
-excludeSet = string.punctuation + ""  # include numbers in the exclude set
+excludeSet = string.punctuation + "0123456789"
 totalNumberOfWords = 8255414
 totalNumberOfDocuments = 98
 numTopics = 4
