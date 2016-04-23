@@ -46,13 +46,31 @@ print "Dictionary Created"
 stop_ids = [dictionary.token2id[stopword] for stopword in stopWords
             if stopword in dictionary.token2id]
 
+stop = open('stop_words.txt', 'w')
+for ids in range(len(stop_ids)):
+    ind2=dictionary.get(stop_ids[ids])
+    print >> stop, ind2.encode('utf8')
+stop.close()
 # filter words that do not appear frequently
 rare = [tokenid for tokenid, docfreq in dictionary.dfs.iteritems() if docfreq == 1]
 
+rare_file = open('rare_words.txt', 'w')
+for ids in range(len(rare)):
+    ind2=dictionary.get(rare[ids])
+
+    print >> rare_file, ind2.encode('utf8')
+
+rare_file.close()
 oneLetterWords = [tokenid for tokenid in dictionary.keys() if len(dictionary.get(tokenid)) == 1]
 dictionary.filter_tokens(stop_ids + rare + oneLetterWords)
 dictionary.compactify()  # remove gaps in id sequence after words that were removed
 
+one_letter = open('one_letter_wds.txt', 'w')
+for ids in range(len(oneLetterWords)):
+    ind2=dictionary.get(oneLetterWords[ids])
+    print >> one_letter, ind2.encode('utf8')
+
+one_letter.close()
 numTokensAfterExtremeRemoval = len(dictionary.keys())
 print "Number of TokensAfterExtremeRemoval:" + str(numTokensAfterExtremeRemoval)
 
