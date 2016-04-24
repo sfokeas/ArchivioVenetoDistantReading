@@ -26,8 +26,8 @@ for line in inputfile:
 occurences = [(x,float(listOfWords.count(x))/(index/2)) for x in set(listOfWords)]
 
 for o in occurences:
-	if o[1] > 0.9:
-		outputfile.write(o[0]+',')
+	if o[1] > 0.25:
+		outputfile.write(o[0]+'\n')
 		print o[0]
 
 inputfile.close()
